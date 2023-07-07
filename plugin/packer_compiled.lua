@@ -124,10 +124,14 @@ _G.packer_plugins = {
     path = "/home/lynch868/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/home/lynch868/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/lynch868/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    loaded = true,
+    path = "/home/lynch868/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
@@ -155,11 +159,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lynch868/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tree-sitter-context_en"] = {
-    loaded = true,
-    path = "/home/lynch868/.local/share/nvim/site/pack/packer/start/tree-sitter-context_en",
-    url = "https://github.com/pmazaitis/tree-sitter-context_en"
   },
   undotree = {
     loaded = true,

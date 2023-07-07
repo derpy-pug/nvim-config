@@ -1,5 +1,7 @@
 vim.opt.guicursor = ""
 
+vim.opt.guifont = "UbuntuMono/UbuntuMonoNerdFont-Regular.ttf"
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
