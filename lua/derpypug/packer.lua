@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},     -- Required
     }
   })
+  use('github/copilot.vim')
   use('nvim-treesitter/nvim-treesitter-context') 
   use('nvim-tree/nvim-web-devicons')
   use {
