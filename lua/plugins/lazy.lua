@@ -13,8 +13,9 @@ return {
     },
 
     { 'nvim-treesitter/nvim-treesitter',  run = ':TSUpdate' },
-    'ThePrimeagen/vim-be-good',
-    'nvim-treesitter/playground',
+    'nvim-treesitter/nvim-treesitter-context',
+    -- 'ThePrimeagen/vim-be-good',
+    -- 'nvim-treesitter/playground',
     'theprimeagen/harpoon',
     'mbbill/undotree',
     'tpope/vim-fugitive',
@@ -39,6 +40,7 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
     { 'L3MON4D3/LuaSnip' },
+
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -49,7 +51,7 @@ return {
         }
     },
     'github/copilot.vim',
-    'nvim-treesitter/nvim-treesitter-context',
+
     'nvim-tree/nvim-web-devicons',
     {
         'nvim-lualine/lualine.nvim',
