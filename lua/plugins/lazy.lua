@@ -19,6 +19,10 @@ return {
     'theprimeagen/harpoon',
     'mbbill/undotree',
     'tpope/vim-fugitive',
+    {
+        'lewis6991/gitsigns.nvim',
+        event = 'BufRead',
+    },
     'tpope/vim-commentary',
     {
         "kylechui/nvim-surround",
