@@ -11,6 +11,7 @@ return {
             vim.cmd('colorscheme rose-pine')
         end
     },
+    'github/copilot.vim',
 
     { 'nvim-treesitter/nvim-treesitter',  run = ':TSUpdate' },
     'nvim-treesitter/nvim-treesitter-context',
@@ -18,11 +19,18 @@ return {
     -- 'nvim-treesitter/playground',
     'theprimeagen/harpoon',
     'mbbill/undotree',
-    'tpope/vim-fugitive',
     {
-        'lewis6991/gitsigns.nvim',
-        event = 'BufRead',
+        "NeogitOrg/neogit",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "nvim-telescope/telescope.nvim", -- optional
+            "sindrets/diffview.nvim",        -- optional
+            "ibhagwan/fzf-lua",              -- optional
+        },
+        config = true
     },
+    'lewis6991/gitsigns.nvim',
     'tpope/vim-commentary',
     {
         "kylechui/nvim-surround",
@@ -54,7 +62,6 @@ return {
             "MunifTanjim/nui.nvim",
         }
     },
-    'github/copilot.vim',
 
     'nvim-tree/nvim-web-devicons',
     {
