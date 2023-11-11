@@ -2,6 +2,13 @@ local neogit = require("neogit")
 
 vim.keymap.set("n", "<leader>gs", "<cmd>Neogit<cr>", { silent = true, noremap = true })
 
+local use_gpg = false
+local handle = io.popen("which gpg")
+if handle then
+    use_gpg = true
+    handle:close()
+end
+
 neogit.setup {
   -- Hides the hints at the top of the status buffer
   disable_hint = false,
@@ -73,7 +80,7 @@ neogit.setup {
   },
   commit_view = {
     kind = "vsplit",
-    verify_commit = os.execute("which gpg") == 0, -- Can be set to true or false, otherwise we try to find the binary
+    verify_commit = use_gpg, -- Can be set to true or false, otherwise we try to find the binary
   },
   log_view = {
     kind = "vsplit",
