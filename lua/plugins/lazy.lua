@@ -3,7 +3,6 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-
     {
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -11,8 +10,6 @@ return {
             vim.cmd('colorscheme rose-pine')
         end
     },
-    'github/copilot.vim',
-
     { 'nvim-treesitter/nvim-treesitter',  run = ':TSUpdate' },
     'nvim-treesitter/nvim-treesitter-context',
     -- 'ThePrimeagen/vim-be-good',
@@ -51,6 +48,27 @@ return {
     { 'neovim/nvim-lspconfig' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/nvim-cmp' },
+    { 'onsails/lspkind.nvim' },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        build = ":Copilot auth",
+        event = "InsertEnter",
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+    },
+
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -64,11 +82,13 @@ return {
     'nvim-tree/nvim-web-devicons',
     {
         'nvim-lualine/lualine.nvim',
+        event = 'VeryLazy',
         dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
     },
+
     {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } },
     }
 }

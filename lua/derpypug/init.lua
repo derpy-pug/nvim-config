@@ -13,4 +13,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require("derpypug.remap")
 require("derpypug.set")
+require("derpypug.autocmd")
 require("lazy").setup("plugins")
