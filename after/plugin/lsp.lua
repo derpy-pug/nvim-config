@@ -10,6 +10,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-Space>'] = cmp.mapping.complete(),
 })
 
+
 -- cmp_mappings['<Tab>'] = nil
 -- cmp_mappings['<S-Tab>'] = nil
 
@@ -110,7 +111,8 @@ require("mason").setup({
 })
 require('mason-lspconfig').setup({
     ensure_installed = {
-        'tsserver',
+        'denols',
+        'ts_ls',
         'eslint',
         'lua_ls',
         'rust_analyzer',
@@ -124,3 +126,16 @@ require('mason-lspconfig').setup({
         lsp.default_setup,
     },
 })
+
+local lspconfig = require('lspconfig')
+
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+lspconfig.ts_ls.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  single_file_support = false
+}
