@@ -50,6 +50,12 @@ return {
     { 'hrsh7th/nvim-cmp' },
     { 'onsails/lspkind.nvim' },
     {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        build = ":Copilot auth",
+        event = "InsertEnter",
+    },
+    {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
@@ -58,15 +64,7 @@ return {
     },
 
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        build = ":Copilot auth",
-        event = "InsertEnter",
-    },
-
-    {
         "iamcco/markdown-preview.nvim",
-        event = "VeryLazy",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
