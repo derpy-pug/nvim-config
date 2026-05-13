@@ -1,5 +1,6 @@
 local lsp = require('lsp-zero')
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_action = lsp.cmp_action()
@@ -8,6 +9,39 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
+    -- ['<CR>'] = cmp.mapping(function(fallback)
+    --     if cmp.visible() then
+    --         if luasnip.expandable() then
+    --             luasnip.expand()
+    --         else
+    --             cmp.confirm({
+    --                 select = true,
+    --             })
+    --         end
+    --     else
+    --         fallback()
+    --     end
+    -- end),
+
+    -- ["<Tab>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif luasnip.locally_jumpable(1) then
+    --     luasnip.jump(1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { "i", "s" }),
+
+    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.locally_jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { "i", "s" }),
 })
 
 -- cmp_mappings['<Tab>'] = nil
@@ -19,7 +53,7 @@ vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     window = {
@@ -33,6 +67,7 @@ cmp.setup({
         { name = 'luasnip',  group_index = 2 },
         { name = 'path',     group_index = 2 },
         { name = 'buffer',   group_index = 2 },
+        { name = 'crates',   group_index = 2 },
     },
     sorting = {
         priority_weight = 2,
@@ -95,6 +130,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, opts)
 end)
 
 lsp.setup()
@@ -118,7 +154,7 @@ require('mason-lspconfig').setup({
         'asm_lsp',
         'clangd',
         'ltex',
-        'jdtls'
+        'jdtls',
     },
     handlers = {
         lsp.default_setup,
